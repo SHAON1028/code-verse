@@ -8,7 +8,7 @@ const auth = getAuth(app);
 export const AuthContext = createContext();
 const UserContext = ({ children }) => {
 
-    const googleProvider = new GoogleAuthProvider()    
+const googleProvider = new GoogleAuthProvider()    
 const [user, setUser] = useState({});
 const [loading,setLoading] = useState(true)
 // 1.Create User Email Pass
@@ -51,14 +51,14 @@ const signIn = (email,password)=>{
 
 // -------------useEffect--------------
 useEffect(()=>{
-    // jokhn component mount hobe
+   
   const unsubscribe =  onAuthStateChanged(auth,(currentUser)=>{
         setUser(currentUser)
         setLoading(false)
     })
 
     return()=>{
-        // jokhon component unMount hobe
+     
         unsubscribe()
     }
 },[])

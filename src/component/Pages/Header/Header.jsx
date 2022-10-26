@@ -1,9 +1,11 @@
-import { Navbar,Button } from 'flowbite-react';
-import React from 'react';
+import { Navbar,Button, Tooltip } from 'flowbite-react';
+import React, { useContext } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import logo from '../../../assets/img/logo.png'
+import { AuthContext } from '../../context/UserContext';
 
 const Header = () => {
+  const { user} = useContext(AuthContext);
   return (
     <Navbar
     fluid={true}
@@ -22,7 +24,28 @@ const Header = () => {
 </div>
     </NavLink>
     <div className="flex md:order-2">
-    <Link to="/login">
+{
+  user?.uid ? 
+  <>
+
+    <Tooltip content={user.displayName}>
+    <img
+       src={user.photoURL}
+      style={{height:'40px'}}
+      className="mr-3 h-6 sm:h-9 relative mx-auto rounded-3xl overflow-hidden"
+      alt=""
+      referrerPolicy="no-referrer"
+    />
+</Tooltip>
+  <Link>
+   <Button className="">
+        Log out
+      </Button>
+   </Link>
+  
+  </> :
+  <>
+      <Link to="/login">
     <button className="self-center px-8 py-3 rounded text-lg" >Sign in</button>
     </Link>
    <Link>
@@ -30,6 +53,9 @@ const Header = () => {
         Sign Up
       </Button>
    </Link>
+  
+  </>
+}
       <Navbar.Toggle />
     </div>
     <Navbar.Collapse >
