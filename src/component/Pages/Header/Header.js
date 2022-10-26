@@ -9,7 +9,7 @@ const Header = () => {
     fluid={true}
     rounded={true}
   >
-    <NavLink to="https://flowbite.com/">
+    <NavLink to="/">
 <div className='flex'>
 <img
         src="https://flowbite.com/docs/images/logo.svg"
@@ -31,7 +31,7 @@ const Header = () => {
     <Navbar.Collapse >
       <NavLink
       className="text-lg"
-        to="/navbars"
+        to="/"
         ctive="true"
       >
         Home
