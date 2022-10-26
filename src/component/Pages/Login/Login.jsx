@@ -1,12 +1,14 @@
 import React, { useContext } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { AuthContext } from '../../context/UserContext';
 import Swal from 'sweetalert2/dist/sweetalert2.js'
 
 const Login = () => {
 
-
+  const navigate = useNavigate()
+  const location = useLocation()
+  const from = location.state?.from?.pathname || '/'
 
     // props drilling-----------------
   const {signInWithGoogle,signIn,signInWithGithub} = useContext(AuthContext) 
@@ -26,6 +28,7 @@ const handleSubmit = (e)=>{
       'Succssfully Login',
       'success'
     )
+    navigate(from,{replace:true})
    
   })
   .catch(error=>console.log(error))
@@ -38,7 +41,7 @@ const handleSubmit = (e)=>{
     .then(results=>{
       const user = results.user
       console.log(user);  
-   
+      navigate(from,{replace:true})
       
     })
     .catch(error=>console.log(error))
@@ -52,7 +55,7 @@ const handleSubmit = (e)=>{
       .then(results=>{
         const user = results.user
         console.log(user);  
-     
+        navigate(from,{replace:true})
         
       })
       .catch(error=>console.log(error))

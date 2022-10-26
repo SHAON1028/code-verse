@@ -1,12 +1,15 @@
 import React, { useContext } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { AuthContext } from '../../context/UserContext';
 import Swal from 'sweetalert2/dist/sweetalert2.js'
 
 const Register = () => {
+const navigate = useNavigate()
+const location  = useLocation()
+const from = location.state?.from?.pathname || '/'
 
-  const {signInWithGoogle,createUser} = useContext(AuthContext) 
+  const {signInWithGoogle,createUser,signInWithGithub,updateUserProfile,user} = useContext(AuthContext) 
 
   // handler-----------------------------
   const handleSubmit = (e)=>{
@@ -14,6 +17,7 @@ const Register = () => {
     const form  = e.target
     const name = form.name.value
     const email = form.email.value
+    const photoURL = form.photo.value
     const password = form.password.value
     console.log(email,password,name)
     createUser(email,password)
@@ -25,6 +29,16 @@ const Register = () => {
         'Succssfully Registerd!',
         'success'
       )
+      form.reset();
+      
+      navigate(from,{replace:true})
+   
+  
+        handleUpdateProfile(name,photoURL)
+      
+     
+      
+      navigate(from,{replace:true})
     })
     .catch(error=>console.log(error))
 
@@ -36,21 +50,57 @@ const Register = () => {
   signInWithGoogle()
   .then(results=>{
     const user = results.user
-    console.log(user);  
+    console.log(user); 
+    
+    navigate(from,{replace:true}) 
  
     
   })
   .catch(error=>console.log(error))
 
 }
+   // ----------------Github-------------
+
+   const handleGitSignIn = ()=>{
+    signInWithGithub()
+    .then(results=>{
+      const user = results.user
+      console.log(user); 
+      
+      navigate(from,{replace:true})
+       
+   
+      
+    })
+    .catch(error=>console.log(error))
+
+  }
+
+  // upadte profile
+
+  const handleUpdateProfile = (name,photoURL)=>{
+    const profile = {
+        displayName:name,
+        photoURL:photoURL
+    }
+    updateUserProfile(profile)
+    .then(()=>{
+      Swal.fire(
+        '',
+        'Succssfully Updated!',
+        'success'
+      )
+    })
+    .catch(error=>console.log(error))
+  }
     return (
         <div>
             <div className="flex justify-center items-center pt-8">
             
             <div className="flex flex-col max-w-md p-6 rounded-md sm:p-10 bg-gray-100 dark:text-gray-900">
 	<div className="mb-8 text-center">
-		<h1 className="my-3 text-4xl font-bold">Sign in</h1>
-		<p className="text-sm dark:text-gray-400">Sign in to access your account</p>
+		<h1 className="my-3 text-4xl font-bold">Sign up</h1>
+		<p className="text-sm dark:text-gray-400">Sign up to get your account</p>
 	</div>
 	<form  onSubmit={handleSubmit} noValidate="" action="" className="space-y-12 ng-untouched ng-pristine ng-valid">
 		<div className="space-y-4">
@@ -60,6 +110,13 @@ const Register = () => {
 					
 				</div>
 				<input type="text" name="name" id="name" placeholder="enter fullname" className="w-full px-3 py-2 border rounded-md dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100" />
+			</div>
+      <div>
+				<div className="flex justify-between mb-2">
+					<label htmlFor="text" className="text-sm">Photo URL</label>
+					
+				</div>
+				<input type="text" name="photo" id="photo" placeholder="enter photo url" className="w-full px-3 py-2 border rounded-md dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100" />
 			</div>
 			<div>
 				<label htmlFor="email" className="block mb-2 text-sm">Email address</label>
@@ -79,7 +136,7 @@ const Register = () => {
               type="submit"
               className="w-full px-8 py-3 font-semibold rounded-md bg-gray-900 hover:bg-gray-700 hover:text-white text-gray-100"
             >
-              Sign in
+              Sign Up
             </button>
           </div>
 			<p className="px-6 text-sm text-center dark:text-gray-400">Don't have an account yet?
@@ -105,7 +162,7 @@ const Register = () => {
             </svg>
           </button>
 
-          <button aria-label="Log in with GitHub" className="p-3 rounded-sm">
+          <button onClick={handleGitSignIn} aria-label="Log in with GitHub" className="p-3 rounded-sm">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 32 32"

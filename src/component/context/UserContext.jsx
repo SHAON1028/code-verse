@@ -17,21 +17,15 @@ const createUser = (email,password)=>{
     setLoading(true)
     return createUserWithEmailAndPassword(auth,email,password)
 }
-//2. Update Name
+//2. Update profile
 
-const updateName = (name)=>{
-    setLoading(true)
-    return updateProfile(auth.currentUser, {
-        displayName: name, 
-      })
+const updateUserProfile = (profile)=>{
+    return updateProfile(auth.currentUser,profile)
 }
-//3.Email Verify
 
-const verifyEmail = ()=>{
-    setLoading(true)
-   return sendEmailVerification(auth.currentUser)
-}
-// 4.Google SignIn 
+
+
+// 3.Google SignIn 
 const signInWithGoogle = ()=>{
     setLoading(true)
     return signInWithPopup(auth,googleProvider)
@@ -70,7 +64,7 @@ useEffect(()=>{
 },[])
 
 // -----------------value/info pass----------
-const authInfo = {user,createUser,updateName,verifyEmail,signInWithGoogle,logOut,signIn,loading,signInWithGithub}
+const authInfo = {user,createUser,updateUserProfile,signInWithGoogle,logOut,signIn,loading,signInWithGithub}
 //   ------------return----------------
   return <AuthContext.Provider value={authInfo}>{children}</AuthContext.Provider>;
 };
