@@ -2,14 +2,14 @@ import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { AuthContext } from '../../context/UserContext';
-import Swal from 'sweetalert2'
+import Swal from 'sweetalert2/dist/sweetalert2.js'
 
 const Login = () => {
 
 
 
     // props drilling-----------------
-  const {signInWithGoogle,signIn} = useContext(AuthContext) 
+  const {signInWithGoogle,signIn,signInWithGithub} = useContext(AuthContext) 
 
 // handler----------------------
 const handleSubmit = (e)=>{
@@ -21,7 +21,11 @@ const handleSubmit = (e)=>{
   .then(results=>{
     const user = results.user
     console.log(user);
-    toast.success('login success')
+    Swal.fire(
+      '',
+      'Succssfully Login',
+      'success'
+    )
    
   })
   .catch(error=>console.log(error))
@@ -40,6 +44,20 @@ const handleSubmit = (e)=>{
     .catch(error=>console.log(error))
 
   }
+
+    // ----------------Github-------------
+
+    const handleGitSignIn = ()=>{
+      signInWithGithub()
+      .then(results=>{
+        const user = results.user
+        console.log(user);  
+     
+        
+      })
+      .catch(error=>console.log(error))
+  
+    }
 
     
     return (
@@ -74,7 +92,7 @@ const handleSubmit = (e)=>{
             </button>
           </div>
 			<p className="px-6 text-sm text-center dark:text-gray-400">Don't have an account yet?
-				<a rel="noopener noreferrer" href="#" className="hover:underline dark:text-violet-400">Sign up</a>.
+				<Link rel="noopener noreferrer" to="/register" className="hover:underline dark:text-violet-400">Sign up</Link>.
 			</p>
 		</div>
 	</form>
@@ -96,7 +114,7 @@ const handleSubmit = (e)=>{
             </svg>
           </button>
 
-          <button aria-label="Log in with GitHub" className="p-3 rounded-sm">
+          <button onClick={handleGitSignIn} aria-label="Log in with GitHub" className="p-3 rounded-sm">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 32 32"
