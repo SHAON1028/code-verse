@@ -5,7 +5,13 @@ import logo from '../../../assets/img/logo.png'
 import { AuthContext } from '../../context/UserContext';
 
 const Header = () => {
-  const { user} = useContext(AuthContext);
+  const { user,logOut} = useContext(AuthContext);
+  const handleLogOut = ()=>
+{
+  logOut()
+  .then(()=>{})
+  .catch(error=>console.log(error))
+}
   return (
     <Navbar
     fluid={true}
@@ -38,7 +44,7 @@ const Header = () => {
     />
 </Tooltip>
   <Link>
-   <Button className="">
+   <Button variant="light" className="ms-2" onClick={handleLogOut}  >
         Log out
       </Button>
    </Link>
@@ -48,7 +54,7 @@ const Header = () => {
       <Link to="/login">
     <button className="self-center px-8 py-3 rounded text-lg" >Sign in</button>
     </Link>
-   <Link>
+   <Link to="/register">
    <Button className="text-lg">
         Sign Up
       </Button>
