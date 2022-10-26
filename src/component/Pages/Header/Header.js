@@ -1,6 +1,6 @@
 import { Navbar,Button } from 'flowbite-react';
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import logo from '../../../assets/img/logo.png'
 
 const Header = () => {
@@ -22,10 +22,14 @@ const Header = () => {
 </div>
     </NavLink>
     <div className="flex md:order-2">
+    <Link to="/login">
     <button className="self-center px-8 py-3 rounded text-lg" >Sign in</button>
-      <Button className="text-lg">
+    </Link>
+   <Link>
+   <Button className="text-lg">
         Sign Up
       </Button>
+   </Link>
       <Navbar.Toggle />
     </div>
     <Navbar.Collapse >

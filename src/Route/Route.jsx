@@ -4,6 +4,8 @@ import Blog from "../component/Pages/Blog/Blog";
 import Courses from "../component/Pages/Courses/Courses";
 import FAQ from "../component/Pages/FAQ/FAQ";
 import Home from "../component/Pages/Home/Home";
+import Login from "../component/Pages/Login/Login";
+
 
 import Main from "../layout/Main";
 
@@ -36,6 +38,11 @@ const router = createBrowserRouter([
             {
                 path:'/blog',
                 element:<Blog></Blog>
+              
+            },
+            {
+                path:'/login',
+                element:<Login></Login>
               
             },
         ]

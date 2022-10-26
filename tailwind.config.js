@@ -1,4 +1,5 @@
 /** @type {import('tailwindcss').Config} */
+const plugin = require('tailwindcss/plugin')
 module.exports = {
   content: [
     "./src/**/*.{js,jsx,ts,tsx}",
@@ -7,7 +8,8 @@ module.exports = {
   theme: {
     extend: {},
   },
-  plugins: [ require('flowbite/plugin')],
+  plugins: [ require('flowbite/plugin'),
+  require('@tailwindcss/forms'),],
 
   
 }
