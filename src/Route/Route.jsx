@@ -32,7 +32,7 @@ const router = createBrowserRouter([
             {
                 path:'/courses',
                 element:<Courses></Courses>,
-                loader:()=>fetch('http://localhost:5000/courses')
+                loader:()=>fetch('https://assign10-server.vercel.app/courses')
               
             },
             {
@@ -60,13 +60,13 @@ const router = createBrowserRouter([
             {
                 path:'/course/:id',
                 element:<CourseDetails></CourseDetails>,
-                loader:({params})=>fetch(`http://localhost:5000/course/${params.id}`)
+                loader:({params})=>fetch(`https://assign10-server.vercel.app/course/${params.id}`)
               
             },
             {
                 path:'/checkout/:id',
                 element:<PrivateRoute><CheckOut></CheckOut></PrivateRoute>,
-                loader:({params})=>fetch(`http://localhost:5000/checkout/${params.id}`)
+                loader:({params})=>fetch(`https://assign10-server.vercel.app/checkout/${params.id}`)
               
             },
         ]
