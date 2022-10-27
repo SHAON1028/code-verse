@@ -1,6 +1,7 @@
-# QuizHunz
+# Code Verse
 
-QuizHuntz is a a simple quiz app. Designed for to test your knowledge, This test will allow to assess your knowledge in React, CSS , JavaScript and Git .Topics: React context api, routing, CSS properties and selectors, JavaScript syntax, events and operators,Git version control
+Your Career in Web Development Starts Here
+Our full stack curriculum is free and supported by a passionate open source community
 
 ## Built With
 
@@ -9,6 +10,15 @@ QuizHuntz is a a simple quiz app. Designed for to test your knowledge, This test
 - Javascript
   -Flowbite React
   -mamba ui
+## Built With
+
+- FireBase Auth
+- Vercel
+- Google git sign in
+- Toogle darkmode
+- Pdf making
+  
+ 
 
 ## Development
 
