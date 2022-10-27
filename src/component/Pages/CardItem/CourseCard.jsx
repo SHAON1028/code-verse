@@ -4,6 +4,7 @@ import { PDFDownloadLink } from "@react-pdf/renderer";
 import { jsPDF } from "jspdf";
 import { Link } from 'react-router-dom';
 import PDF from '../../../pdf/PDF';
+import { TfiCrown } from 'react-icons/tfi'
 
 const CourseCard = ({singlecard}) => {
 
@@ -29,9 +30,17 @@ doc.save(`${title}.pdf`);
     
   imgSrc={img}
 >
+  <div className='flex justify-between'>
   <h5 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-    {title}
+    {title}     
+    
   </h5>
+ <Link to={`/checkout/${id}`}>
+ <Button gradientDuoTone="pinkToOrange">
+  <TfiCrown className="mr-1"/> Get Premium Access
+    </Button>
+ </Link>
+  </div>
   <p className="text-base font-semibold text-gray-700 dark:text-gray-400 ">
     {short_dis}
   </p>
