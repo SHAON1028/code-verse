@@ -1,4 +1,4 @@
-import { Navbar,Button, Tooltip } from 'flowbite-react';
+import { Navbar,Button, Tooltip, Flowbite, DarkThemeToggle } from 'flowbite-react';
 import React, { useContext } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import logo from '../../../assets/img/logo.png'
@@ -6,6 +6,8 @@ import { AuthContext } from '../../context/UserContext';
 
 const Header = () => {
   const { user,logOut} = useContext(AuthContext);
+
+  
   const handleLogOut = ()=>
 {
   logOut()
@@ -76,6 +78,7 @@ const Header = () => {
 
         Courses
       </NavLink>
+      
       <NavLink to="/faq" className="text-lg">
         FAQ
       </NavLink>
