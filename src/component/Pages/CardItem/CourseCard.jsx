@@ -44,10 +44,10 @@ doc.save(`${title}.pdf`);
   <p className="text-base font-semibold text-gray-700 dark:text-gray-400 ">
     {short_dis}
   </p>
-  <p className='text-sm italic'>By {author}</p>
-  <p className='text-sm'>Updated <span className='font-bold'>{updatedAt}</span></p>
+  <p className='text-sm italic dark:text-gray-400'>By {author}</p>
+  <p className='text-sm dark:text-gray-400'>Updated <span className='font-bold'>{updatedAt}</span></p>
   <div className='flex'>
-  <p className='text-sm'>Ratings: {rating} </p>
+  <p className='text-sm dark:text-gray-400'>Ratings: {rating} </p>
   <Rating>
 <Rating.Star />
 <Rating.Star />
@@ -56,7 +56,7 @@ doc.save(`${title}.pdf`);
 <Rating.Star filled={false} />
 </Rating>
   </div>
-  <h3 className='font-bold mt-10'>Price:{price}</h3>
+  <h3 className='font-bold mt-10 dark:text-gray-400'>Price:{price}</h3>
   <div className='flex'>
               <PDFDownloadLink document={<PDF singlecard={singlecard}/>} filename="FORM">
       {({loading}) => (loading ? <button>Loading Document...</button> : <Button>Download</Button> )}

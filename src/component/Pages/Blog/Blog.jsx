@@ -4,8 +4,8 @@ import React from 'react';
 const Blog = () => {
     return (
 
-       <div>
-        <h1 className='text-center text-4xl font-bold m-10'>Welcome to Blogs</h1>
+       <div className='m-20'>
+        <h1 className='text-center text-4xl font-bold m-10 dark:text-green-400' >Welcome to Blogs</h1>
              <Accordion alwaysOpen={true}>
         <Accordion.Panel>
           <Accordion.Title>

@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { AuthContext } from '../../context/UserContext';
@@ -8,7 +8,7 @@ const Register = () => {
 const navigate = useNavigate()
 const location  = useLocation()
 const from = location.state?.from?.pathname || '/'
-
+const [error,setError] = useState('')
   const {signInWithGoogle,createUser,signInWithGithub,updateUserProfile,user} = useContext(AuthContext) 
 
   // handler-----------------------------
@@ -40,7 +40,7 @@ const from = location.state?.from?.pathname || '/'
       
       navigate(from,{replace:true})
     })
-    .catch(error=>console.log(error))
+    .catch(error=>setError(error.message))
 
   }
 
@@ -56,7 +56,7 @@ const from = location.state?.from?.pathname || '/'
  
     
   })
-  .catch(error=>console.log(error))
+  .catch(error=>setError(error.message))
 
 }
    // ----------------Github-------------
@@ -72,7 +72,7 @@ const from = location.state?.from?.pathname || '/'
    
       
     })
-    .catch(error=>console.log(error))
+    .catch(error=>setError(error.message))
 
   }
 
@@ -91,7 +91,7 @@ const from = location.state?.from?.pathname || '/'
         'success'
       )
     })
-    .catch(error=>console.log(error))
+    .catch(error=>setError(error.message))
   }
     return (
         <div>
@@ -104,6 +104,7 @@ const from = location.state?.from?.pathname || '/'
 	</div>
 	<form  onSubmit={handleSubmit} noValidate="" action="" className="space-y-12 ng-untouched ng-pristine ng-valid">
 		<div className="space-y-4">
+    <small className='text-red-600'>{error}</small>
     <div>
 				<div className="flex justify-between mb-2">
 					<label htmlFor="text" className="text-sm">Full Name</label>
@@ -139,8 +140,8 @@ const from = location.state?.from?.pathname || '/'
               Sign Up
             </button>
           </div>
-			<p className="px-6 text-sm text-center dark:text-gray-400">Don't have an account yet?
-				<Link rel="noopener noreferrer" href="#" className="hover:underline dark:text-violet-400">Sign up</Link>.
+			<p className="px-6 text-sm text-center dark:text-gray-400">Already have an account 
+				<Link rel="noopener noreferrer" to="/login" className="hover:underline dark:text-violet-400">Sign in</Link>.
 			</p>
 		</div>
 	</form>

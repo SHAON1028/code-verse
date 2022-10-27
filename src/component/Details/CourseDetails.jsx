@@ -61,7 +61,7 @@ const CourseDetails = () => {
 
 <div className='w-50 lg:ml-20 lg:mr-20 mb-20 p-3'>
     <h1 className='text-2xl text-center font-bold tracking-tight text-gray-900 dark:text-white'>Description</h1>
-    <p className='text-md'>{description}</p>
+    <p className='text-md dark:text-gray-400'>{description}</p>
 </div>
         </div>
     );

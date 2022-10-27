@@ -8,7 +8,7 @@ import router from "./Route/Route";
 
 function App() {
   return (
-    <div >
+    <div className='dark:bg-gray-700'>
       <RouterProvider router={router} ></RouterProvider>
     </div>
   );
