@@ -7,7 +7,7 @@ import PDF from '../../../pdf/PDF';
 
 const CourseCard = ({singlecard}) => {
 
-    const{title,short_dis,img,rating,price,author,updatedAt,description} = singlecard
+    const{title,short_dis,img,rating,price,author,updatedAt,description,id} = singlecard
    
     const handleDownload = ()=>{
       const doc = new jsPDF();
@@ -22,12 +22,8 @@ doc.save(`${title}.pdf`);
             <div className="mb-10 w-full  ">
             
               {/* pdf */}
-              <div>
-              <PDFDownloadLink document={<PDF singlecard={singlecard}/>} filename="FORM">
-      {({loading}) => (loading ? <button>Loading Document...</button> : <button>Download</button> )}
-      </PDFDownloadLink>
-              </div>
-  <Link to="/" className=''>
+ 
+  <div  className=''>
   <Card
   className="shadow-md"
     
@@ -52,8 +48,15 @@ doc.save(`${title}.pdf`);
 </Rating>
   </div>
   <h3 className='font-bold mt-10'>Price:{price}</h3>
+  <div className='flex'>
+              <PDFDownloadLink document={<PDF singlecard={singlecard}/>} filename="FORM">
+      {({loading}) => (loading ? <button>Loading Document...</button> : <Button>Download</Button> )}
+      </PDFDownloadLink>
+      <Link to={`/course/${id}`} className='ml-5'><Button>Details</Button> </Link>
+              </div>
+     
 </Card>
-  </Link>
+  </div>
 </div>
         </div>
     );
