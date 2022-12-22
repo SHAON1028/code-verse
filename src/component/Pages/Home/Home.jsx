@@ -21,22 +21,22 @@ const Home = () => {
                 <img src={pic} alt="" />
             </div>
             {/* 3 */}
-            <div className='m-20 flex items-center justify-evenly'>
-                 <div>
+            <div className='grid lg:ml-64 mt-24 ml-32  grid-cols-1  sm:grid-cols-2 lg:grid-cols-3'>
+                 <div className='mb-10'>
                     <img src="https://www.theodinproject.com/assets/img-learn-7f69020a563b2631283ca49bfc9a8898cda89673b184fd5becc13afec16cc784.svg" alt="" />
                     <div>
                         <h1 className='text-2xl font-bold mt-4 dark:text-gray-300'>Learn</h1>
                         <p className='w-36 dark:text-gray-300'>Learn from a curriculum with the best curated online tutorials, blogs, and courses.</p>
                     </div>
                  </div>
-                 <div>
+                 <div className='mb-10'>
                     <img src="https://www.theodinproject.com/assets/img-build-4e9c3482971d09bc1e15535d71deb68e12462dacc4442d6a6a997df01330287a.svg" alt="" />
                     <div>
                         <h1 className='text-2xl font-bold mt-4 dark:text-gray-300'>Build</h1>
                         <p className='w-36 dark:text-gray-300'>Build dozens of portfolio-worthy projects along the way, from simple scripts to full programs and deployed websites.</p>
                     </div>
                  </div>
-                 <div>
+                 <div className='mb-10'>
                     <img src="https://www.theodinproject.com/assets/img-connect-3d9999fbdc6a4d65329f0add107893b63ce5a277064631419aa6fcbb16893195.svg" alt="" />
                     <div>
                         <h1 className='text-2xl font-bold mt-4 dark:text-gray-300'>Connect</h1>

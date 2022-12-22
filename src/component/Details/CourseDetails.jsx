@@ -8,11 +8,11 @@ const CourseDetails = () => {
     const{title,short_dis,img,rating,price,author,updatedAt,learn,description} = courseAbout
     console.log(courseAbout)
     return (
-        <div className=''>
+        <div className='p-2'>
             <h1 className='text-blue-600 text-3xl text-center font-semibold mt-16 mb-5'> Details of the course</h1>
             <Card
   className="shadow-md flex ">
-    <div className='lg:flex sm:p-6 bg-black'>
+    <div className='lg:flex sm:p-6 bg-black rounded-sm'>
  
         <img className='lg:w-3/12 mr-5'  src={img} alt="" />
     
