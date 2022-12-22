@@ -1,10 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useLoaderData } from 'react-router-dom';
 import CardItem from '../CardItem/CardItem';
 import RightNav from '../RightNav/RightNav';
 
 const Courses = () => {
+    
     const courseAllData = useLoaderData()
+   
 
     return (
         <div className='grid lg:grid-cols-3 w-11/12 mt-20 mx-auto relative'>

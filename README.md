@@ -52,5 +52,5 @@ npm start
 Firebase deploy Link:
 
 ```sh
-https://web-grasp.web.app/
+https://code-verse-1c907.web.app/
 ```
